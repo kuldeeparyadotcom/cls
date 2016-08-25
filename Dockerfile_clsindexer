@@ -1,0 +1,3 @@
+FROM logstash
+
+COPY Configurations/logstash/indexer/config-dir /config-dir

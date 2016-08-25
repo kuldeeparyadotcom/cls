@@ -1,0 +1,7 @@
+version: '2'
+services:
+  ShipperLogstashAgent:
+    image: clsagent:0.1
+    volumes:
+    - /path/to/log/dir:/logs
+    entrypoint: logstash -f /config-dir/shipper.conf
