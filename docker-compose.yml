@@ -11,14 +11,13 @@ services:
   IndexerLogstash:
     image: clsindexer:0.1
     entrypoint: logstash -f /config-dir/logstash.conf
-  #ShipperLogstash:
-    #image: clsagent:0.1
-    #volumes:
-    #- /path/to/log/dir:/logs
-    #entrypoint: logstash -f /config-dir/shipper.conf
+    depends_on:
+    - redis 
   Kibana:
     image: kibana
     ports:
     - "7008:5601"
     environment:
     - ELASTICSEARCH_URL=http://es:9200/
+    depends_on:
+    -  es
